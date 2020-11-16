@@ -1,9 +1,15 @@
 <?php
 
-require './header.php';
+require './partials/header.php';
+?>
+
+<div class="card">
+  <h1>Welcome</h1>
+</div>
 
 
-require './sugnup.php';
 
+<?php
+require './pages/sugnup.php';
 
-require './footer.php';
+require './partials/footer.php';
