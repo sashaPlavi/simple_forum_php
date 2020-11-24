@@ -7,14 +7,15 @@
   //echo get_class($router);
 
 
-  $router->add('/', ['controller' => 'Home', 'action' => 'index']);
-  $router->add('/posts', ['controller' => 'Posts', 'action' => 'index']);
+  $router->add('', ['controller' => 'Home', 'action' => 'index']);
+  $router->add('posts', ['controller' => 'Posts', 'action' => 'index']);
   //$router->add('/posts/new', ['controller' => 'Posts', 'acction' => 'new']);
   $router->add('{controller}/{action}');
-  // $router->add('admin/{action}/{controller}');
+   $router->add('admin/{action}/{controller}');
 
   echo '<pre>';
   var_dump($router->getRoutes());
+  echo htmlspecialchars(print_r($router->getRoutes(), true));
   echo '<pre>';
 
   // if ($router->match($url)) {

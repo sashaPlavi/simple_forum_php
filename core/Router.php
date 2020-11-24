@@ -10,10 +10,10 @@ class Router
   {
     // echo $route . '<br>';
     $route = preg_replace('/\//', '\\/', $route);
-    // echo $route . '<br>';
+    //echo $route . '<br>';
 
     $route = preg_replace('/\{([a-z]+)\}/', '(?P<\1>[a-z-]+)', $route);
-    //echo $route . '<br>';
+   // echo $route . '<br>';
 
     $route = '/^' . $route . '$/i';
     //echo $route . '<br>';
@@ -30,29 +30,30 @@ class Router
   {
     // echo $url;
     // foreach ($this->routes as $route => $params) {
+      //   if ($url == $route) {
+      //     $this->params = $params;
+      //     return true;
+      //   }
+      // }
+      // return false;
+      // $reg_ex = "/^(?P<controller>[a-z-]+)\/(?P<action>[a-z-]+)$/ ";
 
-    //   if ($url == $route) {
-    //     $this->params = $params;
-    //     return true;
-    //   }
-    // }
-    // return false;
-    // $reg_ex = "/^(?P<controller>[a-z-]+)\/(?P<action>[a-z-]+)$/ ";
     foreach ($this->routes as $route => $params) {
-
       if (preg_match($route, $url, $matches)) {
-
-        $params = [];
         foreach ($matches as $key => $match) {
           if (is_string($key)) {
             $params[$key] = $match;
           }
         }
+        $this->params = $params;
+        return true;
       }
     }
-    $this->params = $params;
-    return true;
+    return false;
   }
+    
+
+       
 
   public function getParams()
   {
